@@ -70,6 +70,11 @@
         const canvas = document.getElementById('snakeCanvas');
         const ctx = canvas.getContext('2d');
 
+        // Prevent the default touchmove behavior to avoid scrolling
+        canvas.addEventListener('touchmove', (event) => {
+            event.preventDefault();
+        });
+
         const scale = 10;
         const rows = canvas.height / scale;
         const columns = canvas.width / scale;
