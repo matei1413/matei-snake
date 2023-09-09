@@ -13,6 +13,13 @@
             background-color: #222;
         }
 
+        .game-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
         .launch-screen {
             text-align: center;
         }
@@ -41,6 +48,10 @@
             border: 1px solid #333;
         }
 
+        p {
+            text-align: center;
+        }
+
         /* Mobile-friendly styles */
         @media (max-width: 600px) {
             .title {
@@ -61,14 +72,27 @@
     </style>
 </head>
 <body>
-    <div class="launch-screen">
-        <div class="title">Matei's Snake</div>
-        <button class="play-button" onclick="startGame()">Play</button>
+    <div class="game-container">
+        <div class="launch-screen">
+            <div class="title">Matei's Snake</div>
+            <button class="play-button" onclick="startGame()">Play</button>
+        </div>
+        <canvas id="snakeCanvas" width="400" height="400"></canvas>
+        <p>
+            <a href="https://matei1413.github.io/matei-snake/tests/mobiletest.html">Play on Mobile</a>
+        </p>
     </div>
-    <canvas id="snakeCanvas" width="400" height="400"></canvas>
     <script>
+        const gameContainer = document.querySelector('.game-container');
         const canvas = document.getElementById('snakeCanvas');
         const ctx = canvas.getContext('2d');
+
+        // Center the game container in the middle of the screen
+        gameContainer.style.height = '100vh';
+        gameContainer.style.display = 'flex';
+        gameContainer.style.flexDirection = 'column';
+        gameContainer.style.alignItems = 'center';
+        gameContainer.style.justifyContent = 'center';
 
         // Prevent the default touchmove behavior to avoid scrolling
         canvas.addEventListener('touchmove', (event) => {
